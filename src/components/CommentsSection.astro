@@ -1,0 +1,71 @@
+---
+import Comment from './Comment.astro';
+import CommentForm from './CommentForm.astro';
+
+const comments = [
+    {
+        username: "Jane Cooper",
+        avatar: "https://i.pravatar.cc/40?img=1",
+        content: "This is such a classic! Never gets old 😄",
+        likes: 1234,
+        timestamp: "2 days ago"
+    },
+    {
+        username: "Alex Thompson",
+        avatar: "https://i.pravatar.cc/40?img=2",
+        content: "I can't believe I got Rick Rolled in 2024 😂",
+        likes: 856,
+        timestamp: "1 day ago"
+    },
+    {
+        username: "Sarah Wilson",
+        avatar: "https://i.pravatar.cc/40?img=3",
+        content: "The song that defined an era of internet culture!",
+        likes: 432,
+        timestamp: "5 hours ago"
+    }
+];
+---
+
+<div class="comments-section">
+    <div class="comments-header">
+        <h3>Comments</h3>
+        <span class="comment-count">{comments.length} comments</span>
+    </div>
+    
+    <CommentForm />
+    
+    <div class="comments-list">
+        {comments.map(comment => (
+            <Comment {...comment} />
+        ))}
+    </div>
+</div>
+
+<style>
+    .comments-section {
+        margin-top: 24px;
+        border-top: 1px solid #272727;
+    }
+
+    .comments-header {
+        padding: 24px 0;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .comment-count {
+        color: var(--secondary-color);
+        font-size: 14px;
+    }
+
+    .comments-list {
+        margin-top: 24px;
+    }
+</style>

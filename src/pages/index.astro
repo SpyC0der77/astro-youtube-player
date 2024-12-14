@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoPlayer from '../components/VideoPlayer.astro';
+import SuggestedVideo from '../components/SuggestedVideo.astro';
+import CommentsSection from '../components/CommentsSection.astro';
+
+const suggestedVideos = [
+    {
+        thumbnail: 'https://i.imgur.com/8M3VSiN.jpeg',
+        title: 'Building a YouTube Clone with Astro',
+        channel: 'Tech Channel',
+        views: '10K views',
+        uploadDate: '2 days ago'
+    },
+    {
+        thumbnail: 'https://i.imgur.com/QdKZA5n.jpeg',
+        title: 'Learn Astro in 100 Seconds',
+        channel: 'Quick Tutorials',
+        views: '50K views',
+        uploadDate: '1 week ago'
+    },
+    {
+        thumbnail: 'https://i.imgur.com/vQMRoyx.jpeg',
+        title: 'Web Development in 2024',
+        channel: 'Dev Tips',
+        views: '100K views',
+        uploadDate: '3 days ago'
+    }
+];
+---
+
+<Layout title="YouTube Clone">
+    <main>
+        <div class="content">
+            <div class="main-video">
+                <VideoPlayer
+                    videoId="dQw4w9WgXcQ"
+                    title="Never Gonna Give You Up"
+                    views="1.2B views"
+                    uploadDate="Oct 25, 2009"
+                    channelName="Rick Astley"
+                    description="The official video for 'Never Gonna Give You Up' by Rick Astley. A classic meme and an even better song!"
+                />
+                <CommentsSection />
+            </div>
+            <div class="suggested">
+                <h2>Suggested Videos</h2>
+                {suggestedVideos.map(video => (
+                    <SuggestedVideo {...video} />
+                ))}
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    main {
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 24px;
+    }
+
+    .suggested h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    @media (max-width: 1200px) {
+        .content {
+            grid-template-columns: 1fr;
+        }
+
+        .suggested {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+</style>

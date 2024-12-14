@@ -1,0 +1,92 @@
+---
+interface Props {
+    username: string;
+    avatar: string;
+    content: string;
+    likes: number;
+    timestamp: string;
+}
+
+const { username, avatar, content, likes, timestamp } = Astro.props;
+---
+
+<div class="comment">
+    <div class="avatar">
+        <img src={avatar} alt={username} />
+    </div>
+    <div class="comment-content">
+        <div class="comment-header">
+            <span class="username">{username}</span>
+            <span class="timestamp">{timestamp}</span>
+        </div>
+        <p class="text">{content}</p>
+        <div class="actions">
+            <button class="like-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                </svg>
+                <span>{likes}</span>
+            </button>
+            <button class="reply-button">Reply</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .comment {
+        display: flex;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid #272727;
+    }
+
+    .avatar img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .comment-content {
+        flex-grow: 1;
+    }
+
+    .comment-header {
+        margin-bottom: 4px;
+    }
+
+    .username {
+        font-weight: 500;
+        margin-right: 8px;
+    }
+
+    .timestamp {
+        color: var(--secondary-color);
+        font-size: 12px;
+    }
+
+    .text {
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+
+    .actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    button {
+        background: none;
+        border: none;
+        color: var(--secondary-color);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+    }
+
+    button:hover {
+        color: var(--text-color);
+    }
+</style>

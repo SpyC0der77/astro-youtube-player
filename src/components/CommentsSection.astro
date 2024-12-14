@@ -1,6 +1,5 @@
 ---
 import Comment from './Comment.astro';
-import CommentForm from './CommentForm.astro';
 
 const comments = [
     {
@@ -32,9 +31,6 @@ const comments = [
         <h3>Comments</h3>
         <span class="comment-count">{comments.length} comments</span>
     </div>
-    
-    <CommentForm />
-    
     <div class="comments-list">
         {comments.map(comment => (
             <Comment {...comment} />
@@ -65,7 +61,4 @@ const comments = [
         font-size: 14px;
     }
 
-    .comments-list {
-        margin-top: 24px;
-    }
 </style>

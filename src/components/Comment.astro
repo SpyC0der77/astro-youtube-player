@@ -27,7 +27,6 @@ const { username, avatar, content, likes, timestamp } = Astro.props;
                 </svg>
                 <span>{likes}</span>
             </button>
-            <button class="reply-button">Reply</button>
         </div>
     </div>
 </div>
@@ -79,14 +78,9 @@ const { username, avatar, content, likes, timestamp } = Astro.props;
         background: none;
         border: none;
         color: var(--secondary-color);
-        cursor: pointer;
         display: flex;
         align-items: center;
         gap: 6px;
         font-size: 14px;
-    }
-
-    button:hover {
-        color: var(--text-color);
     }
 </style>
